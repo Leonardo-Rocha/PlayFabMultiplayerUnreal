@@ -299,7 +299,7 @@ public class OnlineSubsystemPlayFab : ModuleRules
 
         public void ConfigurePlayFabDependencies(ReadOnlyTargetRules Target, ModuleRules ThisModule)
         {
-            string PlatformDir = Path.Combine(Directory.GetCurrentDirectory(), "..", "Plugins", "Online", "OnlineSubsystemPlayFab", "Platforms", "GDK");
+            string PlatformDir = Path.Combine(ThisModule.PluginDirectory, "Platforms", "GDK");
 
             if (!Directory.Exists(PlatformDir) ||
                 !Directory.Exists(Path.Combine(PlatformDir, "Redist")) ||
@@ -357,12 +357,12 @@ public class OnlineSubsystemPlayFab : ModuleRules
 
         public void ConfigurePlayFabDependencies(ReadOnlyTargetRules Target, ModuleRules ThisModule)
         {
-            string PlatformDir = Path.Combine(Directory.GetCurrentDirectory(), "..", "Plugins", "Online", "OnlineSubsystemPlayFab", "Platforms", "Switch");
+            string PlatformDir = Path.Combine(ThisModule.PluginDirectory, "Platforms", "Switch");
 
             if (!Directory.Exists(PlatformDir))
             {
                 throw new BuildException("PlayFab precompiled dependencies were not found.");
-            }        
+            }
 
             // Find the MLP and Party library names under the PlatformDir.
             NuGetPackageLoader NuGetLoader = new NuGetPackageLoader();
@@ -431,7 +431,7 @@ public class OnlineSubsystemPlayFab : ModuleRules
 
         public void ConfigurePlayFabDependencies(ReadOnlyTargetRules Target, ModuleRules ThisModule)
         {
-            string PlatformDir = Path.Combine(Directory.GetCurrentDirectory(), "..", "Plugins", "Online", "OnlineSubsystemPlayFab", "Platforms", "Windows");
+            string PlatformDir = Path.Combine(ThisModule.PluginDirectory, "Platforms", "Windows");
 
             if (!Directory.Exists(PlatformDir) || 
                 !Directory.Exists(Path.Combine(PlatformDir, "Redist")) || 
